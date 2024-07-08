@@ -2,6 +2,7 @@ package databaseimplementation
 
 import (
 	"context"
+	"fmt"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -17,6 +18,7 @@ func (m *MongoDB) Connect(ctx context.Context) (interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
+	fmt.Println("Connected to MongoDB!")
 	return client, nil
 }
 
