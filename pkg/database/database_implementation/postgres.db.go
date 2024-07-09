@@ -13,12 +13,12 @@ type PostgresDB struct {
 }
 
 func (p *PostgresDB) Connect(ctx context.Context) (interface{}, error) {
-	db, err := sql.Open("postgres", p.DSN)
+	Client, err := sql.Open("postgres", p.DSN)
 	if err != nil {
 		return nil, err
 	}
 	fmt.Println("Connected to PostgreSQL!")
-	return db, nil
+	return Client, nil
 }
 
 func NewPostgresDB(connectionString string) *PostgresDB {

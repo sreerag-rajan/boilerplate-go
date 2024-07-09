@@ -1,16 +1,14 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 
-	// "github.com/sreerag-rajan/boilerplate-go/config"
+	"github.com/sreerag-rajan/boilerplate-go/config"
 	"github.com/sreerag-rajan/boilerplate-go/internal"
-	databaseimplementation "github.com/sreerag-rajan/boilerplate-go/pkg/database/database_implementation"
 )
 
 func main() {
@@ -19,12 +17,13 @@ func main() {
 		fmt.Println("Error loading .env file", err)
 	}
 
+	err = config.DBInit()
+	if err != nil {
+		fmt.Println("Error initializing database", err)
+		os.Exit(1)
+	}
+
 	r := gin.Default()
-
-	ctx := context.Background()
-	db, err := databaseimplementation.GetDatabase(ctx)
-
-	fmt.Println(db) // this is temperory
 
 	if err != nil {
 		fmt.Println("Error initializing database", err)

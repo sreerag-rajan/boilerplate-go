@@ -14,7 +14,7 @@ func GetDatabase(ctx context.Context) (interface{}, error) {
 	dbType := os.Getenv("DB_TYPE")
 	dbUri := os.Getenv("DB_URI")
 
-	fmt.Println(dbType, dbUri)
+	fmt.Println(dbType)
 	var db DB
 	if dbType == "mongo" {
 		db = NewMongoDB(dbUri)

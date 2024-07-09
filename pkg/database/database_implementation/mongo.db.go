@@ -14,12 +14,12 @@ type MongoDB struct {
 
 func (m *MongoDB) Connect(ctx context.Context) (interface{}, error) {
 	clientOptions := options.Client().ApplyURI(m.URI)
-	client, err := mongo.Connect(ctx, clientOptions)
+	Client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		return nil, err
 	}
 	fmt.Println("Connected to MongoDB!")
-	return client, nil
+	return Client, nil
 }
 
 func NewMongoDB(connectionString string) *MongoDB {
