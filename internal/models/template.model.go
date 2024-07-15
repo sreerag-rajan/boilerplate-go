@@ -11,4 +11,4 @@ type Template struct {
 	Archived string `json:"archived"`
 }
 
-var TemplateModel, err = modelImplementation.ModelFactory("mongo", config.Client, "template", "dbName")
+var TemplateModel, _ = modelImplementation.ModelFactory("mongo", config.Client, "template", "dbName")
